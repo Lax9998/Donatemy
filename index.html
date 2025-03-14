@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate To Buy Takjil</title>
+
+    <!-- Import Font "Ramadan Blessing" -->
+    <style>
+        @font-face {
+            font-family: 'Ramadan Blessing';
+            src: url('ramadan-blessing.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background video */
+        #videoBg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Ramadan Blessing', sans-serif;
+        }
+
+        #qrImage {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Tombol download */
+        #downloadBtn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 24px;
+            background: #ffcc00;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        #downloadBtn:hover {
+            background: #ffdd33;
+            transform: scale(1.1);
+        }
+
+        /* Responsif */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            #qrImage {
+                width: 180px;
+                height: 180px;
+            }
+
+            #downloadBtn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video id="videoBg" autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video.
+    </video>
+
+    <div class="container">
+        <h1>Donate To Buy Takjil</h1>
+        <img id="qrImage" src="qrcode.png" alt="QR Code">
+        <br>
+        <button id="downloadBtn">Unduh QR Code</button>
+    </div>
+
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            let qrImage = document.getElementById("qrImage");
+            let link = document.createElement("a");
+            link.href = qrImage.src;
+            link.download = "qrcode.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
